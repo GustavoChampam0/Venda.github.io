@@ -109,6 +109,12 @@ body {
     transform: translateY(-2px);
 }
 
+/* Feedback visual de filtros */
+#filtro-msg {
+    font-size: 0.9rem;
+    text-align: center;
+}
+
 /* Seção Sobre Nós */
 #sobre {
     background-color: #f8f9fa;
@@ -123,22 +129,15 @@ body {
     color: #333;
 }
 
-#sobre p.lead {
-    font-size: 1.2rem;
-    font-weight: 400;
-    margin-bottom: 20px;
-    line-height: 1.6;
-    color: #555;
+#sobre i {
+    color: #FFA500;
 }
 
-#sobre p {
-    font-size: 1.1rem;
-    color: #666;
-    line-height: 1.8;
-    margin-bottom: 30px;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+#sobre h4 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 15px;
+    color: #333;
 }
 
 /* Produtos */
@@ -209,6 +208,7 @@ body {
 .produto a.btn:hover {
     background-color: #FF8C00;
     color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 /* Paginação Geral */
