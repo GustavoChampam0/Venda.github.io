@@ -12,13 +12,16 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentCategory = ''; 
     let filters = {}; 
 
+    // Função para buscar produtos pela categoria
     function buscarProdutosPorCategoria(page = 1) {
         let apiUrl = `https://api.mercadolibre.com/sites/MLB/search?seller_id=178701040&offset=${(page - 1) * 50}&limit=50`;
 
+        // Adiciona a categoria atual à URL da API, se houver uma categoria selecionada
         if (currentCategory) {
             apiUrl += `&q=${currentCategory}`;
         }
 
+        // Adiciona os filtros de preço, se aplicados
         if (filters.price) {
             if (filters.price === '3500-INF') {
                 apiUrl += `&price=3500-*`; 
@@ -27,8 +30,10 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
+        // Mostra mensagem de carregamento
         produtosLista.innerHTML = '<p>Carregando produtos...</p>';
 
+        // Busca produtos da API e exibe no site
         fetch(apiUrl)
             .then(response => response.json())
             .then(data => {
@@ -47,6 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
 
+    // Função para exibir os produtos
     function exibirProdutos(produtos) {
         produtosLista.innerHTML = '';
         produtos.forEach(produto => {
@@ -64,6 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Função para gerar a paginação
     function gerarPaginacao() {
         pagination.innerHTML = '';
         let paginationHTML = '';
@@ -97,6 +104,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Aplicar filtros ao clicar no botão de aplicar
     applyFiltersButton.addEventListener('click', function() {
         const selectedPrice = document.querySelector('input[name="price"]:checked');
         filters.price = selectedPrice ? selectedPrice.value : "";
@@ -105,18 +113,22 @@ document.addEventListener('DOMContentLoaded', function() {
         buscarProdutosPorCategoria(currentPage);
     });
 
+    // Remover filtros ao clicar no botão de remover
     removeFiltersButton.addEventListener('click', function() {
         filters = {}; 
         currentCategory = ''; 
         currentPage = 1;
 
+        // Desmarca todos os filtros de preço
         document.querySelectorAll('input[name="price"]').forEach(input => {
             input.checked = false;
         });
 
+        // Refaz a busca sem filtros
         buscarProdutosPorCategoria(currentPage);
     });
 
+    // Evento de clique em cada link de categoria
     categoryLinks.forEach(link => {
         link.addEventListener('click', function(event) {
             event.preventDefault();
@@ -126,6 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Função para busca manual
     searchForm.addEventListener('submit', function(event) {
         event.preventDefault();
         currentCategory = searchInput.value.trim();
@@ -133,5 +146,6 @@ document.addEventListener('DOMContentLoaded', function() {
         buscarProdutosPorCategoria(currentPage);
     });
 
+    // Carrega produtos da categoria padrão ao iniciar a página
     buscarProdutosPorCategoria();
 });
