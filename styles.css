@@ -6,7 +6,6 @@ body {
     padding: 0;
 }
 
-/* Navbar */
 .navbar {
     background-color: #000;
     position: relative;
@@ -15,11 +14,6 @@ body {
 
 .navbar-brand, .nav-link {
     color: #FFA500 !important;
-    transition: color 0.3s ease; /* Suaviza a mudança de cor ao passar o mouse */
-}
-
-.navbar-nav .nav-link:hover {
-    color: #FF8C00 !important; /* Cor mais vibrante ao passar o mouse */
 }
 
 .navbar-toggler-icon {
@@ -34,14 +28,14 @@ body {
 .category-link {
     font-weight: bold;
     text-transform: uppercase;
-    transition: color 0.3s ease;
+    transition: color 0.3s;
 }
 
 .category-link:hover {
     color: #FF8C00;
 }
 
-/* Sidebar */
+/* Sidebar de Filtros */
 .sidebar {
     background-color: #ffffff;
     padding: 20px;
@@ -49,7 +43,7 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Formulário de busca */
+/* Ajustes para o formulário de busca */
 .input-group {
     display: flex;
     align-items: center;
@@ -73,7 +67,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-color 0.3s ease;
 }
 
 .search-button i {
@@ -85,7 +78,7 @@ body {
     background-color: #FF8C00;
 }
 
-/* Filtros */
+/* Filtros Customizados */
 .filtros {
     background-color: #f9f9f9;
     border-radius: 10px;
@@ -198,28 +191,27 @@ body {
     }
 }
 
-/* Botão de compra */
+/* Estilo do botão de compra */
 .produto a.btn {
     background-color: #FFA500;
     color: #fff;
     border-radius: 25px;
     padding: 10px 20px;
-    transition: background-color 0.3s ease, transform 0.3s;
+    transition: background-color 0.3s ease;
+    height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 50px;
     width: 100%;
     margin-top: 10px;
 }
 
 .produto a.btn:hover {
     background-color: #FF8C00;
-    transform: translateY(-2px); /* Efeito de subir levemente ao passar o mouse */
     color: #fff;
 }
 
-/* Paginação */
+/* Paginação Geral */
 .pagination {
     display: flex;
     justify-content: center;
@@ -257,7 +249,7 @@ body {
     border-color: #FF8C00;
 }
 
-/* Responsividade */
+/* Responsivo: Ajuste para telas menores */
 @media (max-width: 576px) {
     .pagination {
         font-size: 14px;
