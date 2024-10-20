@@ -35,6 +35,18 @@ body {
     color: #FF8C00;
 }
 
+/* Dropdown de Categoria */
+#categoriaSelect {
+    width: 100%;
+    padding: 8px;
+    border: 2px solid #FFA500;
+    border-radius: 8px;
+    background-color: #fff;
+    color: #333;
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
 /* Sidebar de Filtros */
 .sidebar {
     background-color: #ffffff;
@@ -107,12 +119,6 @@ body {
     background-color: #FF8C00;
     box-shadow: 0 6px 12px rgba(255, 140, 0, 0.5);
     transform: translateY(-2px);
-}
-
-/* Feedback visual de filtros */
-#filtro-msg {
-    font-size: 0.9rem;
-    text-align: center;
 }
 
 /* Seção Sobre Nós */
