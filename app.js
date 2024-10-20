@@ -2,11 +2,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const produtosLista = document.getElementById('produtos-lista');
     const pagination = document.getElementById('pagination');
     const categoryLinks = document.querySelectorAll('.category-link');
+    const categoriaSelect = document.getElementById('categoriaSelect'); // Dropdown para categoria
     const applyFiltersButton = document.getElementById('apply-filters');
     const removeFiltersButton = document.getElementById('remove-filters'); 
     const searchForm = document.getElementById('search-form');
     const searchInput = document.getElementById('search-input');
-    const filtroMsg = document.getElementById('filtro-msg'); // Mensagem de filtro aplicado
 
     let currentPage = 1;
     let totalPages = 1;
@@ -110,9 +110,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const selectedPrice = document.querySelector('input[name="price"]:checked');
         filters.price = selectedPrice ? selectedPrice.value : "";
 
-        filtroMsg.style.display = "block";
-        setTimeout(() => filtroMsg.style.display = "none", 2000); // Exibe mensagem temporária
-
         currentPage = 1;
         buscarProdutosPorCategoria(currentPage);
     });
@@ -131,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function() {
         buscarProdutosPorCategoria(currentPage);
     });
 
-    // Evento de clique em cada link de categoria
+    // Evento de clique nos links de categoria (menu superior)
     categoryLinks.forEach(link => {
         link.addEventListener('click', function(event) {
             event.preventDefault();
@@ -139,6 +136,13 @@ document.addEventListener('DOMContentLoaded', function() {
             currentPage = 1;
             buscarProdutosPorCategoria(currentPage);
         });
+    });
+
+    // Filtro de categoria pelo dropdown
+    categoriaSelect.addEventListener('change', function() {
+        currentCategory = this.value;
+        currentPage = 1;
+        buscarProdutosPorCategoria(currentPage);
     });
 
     // Função para busca manual
