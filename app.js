@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const removeFiltersButton = document.getElementById('remove-filters'); 
     const searchForm = document.getElementById('search-form');
     const searchInput = document.getElementById('search-input');
+    const filtroMsg = document.getElementById('filtro-msg'); // Mensagem de filtro aplicado
 
     let currentPage = 1;
     let totalPages = 1;
@@ -62,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const imgUrl = produto.thumbnail.replace('I.jpg', 'B.jpg');
 
             produtoElement.innerHTML = 
-                `<img src="${imgUrl}" alt="${produto.title}">
+                `<img loading="lazy" src="${imgUrl}" alt="${produto.title}">
                 <h3>${produto.title}</h3>
                 <p>R$ ${produto.price.toFixed(2)}</p>
                 <a href="${produto.permalink}" class="btn btn-primary" target="_blank">Comprar pelo Mercado Shops</a>`;
@@ -109,6 +110,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const selectedPrice = document.querySelector('input[name="price"]:checked');
         filters.price = selectedPrice ? selectedPrice.value : "";
 
+        filtroMsg.style.display = "block";
+        setTimeout(() => filtroMsg.style.display = "none", 2000); // Exibe mensagem temporária
+
         currentPage = 1;
         buscarProdutosPorCategoria(currentPage);
     });
@@ -124,7 +128,6 @@ document.addEventListener('DOMContentLoaded', function() {
             input.checked = false;
         });
 
-        // Refaz a busca sem filtros
         buscarProdutosPorCategoria(currentPage);
     });
 
